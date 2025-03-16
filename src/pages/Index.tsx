@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import GameModes from '@/components/GameModes';
 import Store from '@/components/Store';
-import Vote from '@/components/Vote';
 import Discord from '@/components/Discord';
 
 const Index = () => {
@@ -38,7 +37,7 @@ const Index = () => {
     <div className="min-h-screen bg-white dark:bg-dark-900 overflow-hidden">
       {/* Animated Logo that appears when someone visits the website */}
       <motion.div 
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-dark-900"
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-gradient-to-br from-white to-rise-50 dark:from-dark-900 dark:to-dark-950"
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
         transition={{ 
@@ -68,7 +67,7 @@ const Index = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <span className="text-rise-500">RISE</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">RISE</span>
               <motion.span 
                 className="text-dark-900 dark:text-white"
                 initial={{ opacity: 0 }}
@@ -80,7 +79,7 @@ const Index = () => {
             </motion.span>
           </motion.h1>
           <motion.div 
-            className="h-1 w-0 bg-rise-500 mt-4"
+            className="h-1 w-0 bg-gradient-to-r from-rise-500 to-red-600 mt-4"
             initial={{ width: 0 }}
             animate={{ width: "200px" }}
             transition={{ delay: 1.2, duration: 0.8 }}
@@ -92,7 +91,6 @@ const Index = () => {
       <Hero />
       <GameModes />
       <Store />
-      <Vote />
       <Discord />
       
       {/* Footer */}

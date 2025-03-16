@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -142,6 +141,12 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out forwards',
 				'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
 				'float': 'float 3s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'red-gradient': 'linear-gradient(90deg, #E11D48 0%, #FDF2F4 100%)',
+				'red-gradient-subtle': 'linear-gradient(90deg, #FCE7EA 0%, #FDF2F4 100%)',
+				'red-gradient-dark': 'linear-gradient(90deg, #A71736 0%, #E11D48 100%)',
 			}
 		}
 	},

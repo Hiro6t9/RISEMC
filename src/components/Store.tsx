@@ -1,58 +1,11 @@
 
 import { useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Crown, Star, ArrowUpRight } from 'lucide-react';
-
-interface StoreItem {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  featured?: boolean;
-  category: string;
-}
-
-const storeItems: StoreItem[] = [
-  {
-    id: 'vip-rank',
-    name: 'VIP Rank',
-    description: 'Get exclusive perks, custom tags, and enhanced gameplay features.',
-    price: 9.99,
-    image: 'https://i.imgur.com/OXpbVQU.png',
-    featured: true,
-    category: 'ranks',
-  },
-  {
-    id: 'mvp-rank',
-    name: 'MVP Rank',
-    description: 'All VIP perks plus special commands, particle effects, and more slots.',
-    price: 19.99,
-    image: 'https://i.imgur.com/KrHC2Pf.png',
-    featured: true,
-    category: 'ranks',
-  },
-  {
-    id: 'legend-crate',
-    name: 'Legend Crate Key',
-    description: 'Unlock rare items, powerful gear, and exclusive cosmetics.',
-    price: 4.99,
-    image: 'https://i.imgur.com/mKVnGDA.png',
-    category: 'crates',
-  },
-  {
-    id: 'mystery-box',
-    name: 'Mystery Box',
-    description: 'Random selection of valuable items with a chance for legendary gear.',
-    price: 2.99,
-    image: 'https://i.imgur.com/CGVN8aF.png',
-    category: 'items',
-  },
-];
+import { ShoppingCart, Package, Crown, ExternalLink, Tag, CreditCard } from 'lucide-react';
 
 const Store = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const contentRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -71,94 +24,156 @@ const Store = () => {
       observer.observe(sectionRef.current);
     }
     
-    itemRefs.current.forEach(item => {
-      if (item) observer.observe(item);
-    });
+    if (contentRef.current) {
+      observer.observe(contentRef.current);
+    }
     
     return () => observer.disconnect();
   }, []);
+
+  const storeFeatures = [
+    {
+      icon: <Crown className="h-5 w-5" />,
+      title: 'Premium Ranks',
+      description: 'Enhance your gameplay with exclusive perks and features.',
+    },
+    {
+      icon: <Package className="h-5 w-5" />,
+      title: 'Cosmetic Items',
+      description: 'Stand out with unique cosmetics that make you look awesome.',
+    },
+    {
+      icon: <Tag className="h-5 w-5" />,
+      title: 'Special Kits',
+      description: 'Get a head start with powerful gear and resources.',
+    },
+    {
+      icon: <CreditCard className="h-5 w-5" />,
+      title: 'Secure Payments',
+      description: 'All transactions are processed through secure payment gateways.',
+    },
+  ];
   
   return (
     <section 
       id="store" 
       ref={sectionRef}
-      className="py-24 bg-gray-50 dark:bg-dark-950/50 relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-rise-50 to-white dark:from-dark-800 dark:to-dark-900 relative overflow-hidden"
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-pattern opacity-30 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-pattern opacity-10 pointer-events-none"></div>
       
-      <div className="container mx-auto px-6 relative">
-        <div className="text-center mb-16 animate-reveal">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Server <span className="gradient-text">Store</span>
-          </h2>
-          <p className="text-dark-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Support the server and enhance your gameplay with exclusive items, ranks, and perks.
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {storeItems.map((item, index) => (
-            <div
-              key={item.id}
-              ref={el => itemRefs.current[index] = el}
-              className={`animate-reveal delayed-${index * 100} bg-white dark:bg-dark-800 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-dark-700 flex flex-col`}
-            >
-              {/* Featured badge */}
-              {item.featured && (
-                <div className="absolute top-4 right-4 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center">
-                  <Crown size={12} className="mr-1" />
-                  BEST VALUE
-                </div>
-              )}
-              
-              {/* Item image */}
-              <div className="h-48 overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none"></div>
-                <img 
-                  src={item.image} 
-                  alt={item.name}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          {/* Content */}
+          <div className="w-full lg:w-1/2" ref={contentRef}>
+            <div className="animate-reveal">
+              <div className="inline-flex items-center rounded-full px-3 py-1 mb-6 bg-rise-100 dark:bg-rise-900/30 border border-rise-200 dark:border-rise-800/30">
+                <span className="text-xs font-medium text-rise-700 dark:text-rise-300">
+                  Support the Server
+                </span>
               </div>
               
-              <div className="p-6 flex flex-col flex-grow">
-                {/* Category pill */}
-                <span className="text-xs uppercase tracking-wider bg-gray-100 dark:bg-dark-700 text-dark-500 dark:text-gray-400 px-2 py-1 rounded-full inline-block mb-2 w-fit">
-                  {item.category}
-                </span>
-                
-                {/* Item details */}
-                <h3 className="text-lg font-bold mb-2">{item.name}</h3>
-                
-                <p className="text-dark-600 dark:text-gray-300 text-sm mb-4 flex-grow">
-                  {item.description}
-                </p>
-                
-                {/* Price and button */}
-                <div className="flex items-end justify-between mt-2">
-                  <span className="text-xl font-bold text-rise-500">${item.price}</span>
-                  <Button 
-                    size="sm" 
-                    variant="outline" 
-                    className="border-rise-500 text-rise-500 hover:bg-rise-500 hover:text-white"
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Visit our <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">Store</span>
+              </h2>
+              
+              <p className="text-dark-600 dark:text-gray-300 mb-8 max-w-lg">
+                Support the server and enhance your gameplay experience with exclusive ranks, items, and perks. Our store offers a variety of options to make your time on RiseMC even more enjoyable.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {storeFeatures.map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className={`animate-reveal delayed-${index * 100} flex items-start`}
                   >
-                    <span>Buy Now</span>
-                    <ArrowUpRight size={16} className="ml-1" />
+                    <div className="mt-1 mr-3 p-2 rounded-md bg-rise-100 dark:bg-rise-900/50 text-rise-600 dark:text-rise-400">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-medium mb-1">{feature.title}</h3>
+                      <p className="text-sm text-dark-500 dark:text-gray-400">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <Button 
+                className="bg-gradient-to-r from-rise-500 to-red-600 hover:from-rise-600 hover:to-red-700 text-white shadow-md"
+                onClick={() => window.open('https://store.risemc.fun', '_blank')}
+              >
+                Visit Store
+                <ExternalLink size={16} className="ml-2" />
+              </Button>
+            </div>
+          </div>
+          
+          {/* Store preview */}
+          <div className="w-full lg:w-1/2 animate-reveal">
+            <div className="bg-white dark:bg-dark-800 rounded-2xl shadow-xl overflow-hidden border border-rise-100 dark:border-dark-700">
+              {/* Store header */}
+              <div className="bg-gradient-to-r from-rise-500 to-red-600 p-4 text-white flex items-center">
+                <ShoppingCart className="w-6 h-6 mr-3" />
+                <div>
+                  <h3 className="font-bold">RISEMC Store</h3>
+                  <p className="text-xs opacity-80">Support the server & get perks</p>
+                </div>
+              </div>
+              
+              {/* Store content preview */}
+              <div className="p-6">
+                <div className="flex items-center mb-6">
+                  <div className="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gradient-to-r from-rise-500 to-red-600 flex items-center justify-center text-white">
+                    <Crown size={20} />
+                  </div>
+                  <div className="flex-grow">
+                    <p className="font-bold">Featured Items</p>
+                    <p className="text-xs text-dark-500 dark:text-gray-400">Check out our best-selling items!</p>
+                  </div>
+                </div>
+                
+                {/* Featured items preview */}
+                <div className="space-y-4 mb-6">
+                  <div className="bg-gray-50 dark:bg-dark-900 rounded-lg p-4 flex items-center justify-between border border-rise-100 dark:border-dark-700">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 bg-gradient-to-r from-amber-400 to-amber-600 rounded-md flex items-center justify-center text-white mr-3">
+                        <Crown size={18} />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-sm">VIP Rank</h4>
+                        <p className="text-xs text-dark-500 dark:text-gray-400">Exclusive perks & features</p>
+                      </div>
+                    </div>
+                    <span className="text-sm font-bold text-rise-600">$9.99</span>
+                  </div>
+                  
+                  <div className="bg-gray-50 dark:bg-dark-900 rounded-lg p-4 flex items-center justify-between border border-rise-100 dark:border-dark-700">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-purple-600 rounded-md flex items-center justify-center text-white mr-3">
+                        <Package size={18} />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-sm">Mystery Box</h4>
+                        <p className="text-xs text-dark-500 dark:text-gray-400">Random rare items & gear</p>
+                      </div>
+                    </div>
+                    <span className="text-sm font-bold text-rise-600">$4.99</span>
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <Button 
+                    className="w-full bg-gradient-to-r from-rise-500 to-red-600 hover:from-rise-600 hover:to-red-700 text-white shadow-md"
+                    onClick={() => window.open('https://store.risemc.fun', '_blank')}
+                  >
+                    Browse All Items
+                    <ShoppingCart size={16} className="ml-2" />
                   </Button>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-        
-        <div className="mt-12 text-center animate-reveal">
-          <Button 
-            className="bg-white dark:bg-dark-800 text-rise-500 hover:bg-rise-500 hover:text-white border border-rise-200 dark:border-dark-700"
-          >
-            View All Store Items
-            <ArrowRight size={16} className="ml-2" />
-          </Button>
+          </div>
         </div>
       </div>
     </section>
