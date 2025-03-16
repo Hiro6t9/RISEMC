@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import GameModes from '@/components/GameModes';
 import Discord from '@/components/Discord';
-import { ThemeProvider } from 'next-themes';
 
 const Index = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -42,78 +41,76 @@ const Index = () => {
   }, []);
   
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-      <div className="min-h-screen bg-rise-950 text-white overflow-hidden">
-        {/* Animated Logo that appears when someone visits the website */}
-        {showSplash && (
-          <motion.div 
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-gradient-to-br from-rise-950 to-rise-900"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0 }}
-            transition={{ 
-              duration: 0.8, 
-              delay: 2.5,
-              ease: "easeInOut" 
-            }}
-            onAnimationComplete={() => {
-              document.body.style.overflow = "auto";
-              setShowSplash(false);
-            }}
+    <div className="min-h-screen text-rise-900 overflow-hidden">
+      {/* Animated Logo that appears when someone visits the website */}
+      {showSplash && (
+        <motion.div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-gradient-to-br from-creamy-200 to-creamy-100"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ 
+            duration: 0.8, 
+            delay: 2.5,
+            ease: "easeInOut" 
+          }}
+          onAnimationComplete={() => {
+            document.body.style.overflow = "auto";
+            setShowSplash(false);
+          }}
+        >
+          <motion.div
+            className="flex items-center justify-center flex-col"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <motion.div
-              className="flex items-center justify-center flex-col"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+            <motion.h1 
+              className="text-7xl md:text-9xl font-bold font-minecraft"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
             >
-              <motion.h1 
-                className="text-7xl md:text-9xl font-bold font-minecraft"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8 }}
+              <motion.span 
+                className="inline-block"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
               >
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">RISE</span>
                 <motion.span 
-                  className="inline-block"
+                  className="text-rise-800"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
                 >
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">RISE</span>
-                  <motion.span 
-                    className="text-white"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 0.5 }}
-                  >
-                    MC
-                  </motion.span>
+                  MC
                 </motion.span>
-              </motion.h1>
-              <motion.div 
-                className="h-1 w-0 bg-gradient-to-r from-rise-500 to-red-600 mt-4"
-                initial={{ width: 0 }}
-                animate={{ width: "200px" }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-              />
-            </motion.div>
+              </motion.span>
+            </motion.h1>
+            <motion.div 
+              className="h-1 w-0 bg-gradient-to-r from-rise-500 to-red-600 mt-4"
+              initial={{ width: 0 }}
+              animate={{ width: "200px" }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            />
           </motion.div>
-        )}
-        
-        <Navbar />
-        <Hero />
-        <GameModes />
-        <Discord />
-        
-        {/* Footer */}
-        <footer className="bg-rise-950 text-white py-6 text-center border-t border-rise-900/30">
-          <div className="container mx-auto px-4">
-            <p className="text-sm opacity-70">
-              © {new Date().getFullYear()} RISEMC. All rights reserved.
-            </p>
-          </div>
-        </footer>
-      </div>
-    </ThemeProvider>
+        </motion.div>
+      )}
+      
+      <Navbar />
+      <Hero />
+      <GameModes />
+      <Discord />
+      
+      {/* Footer */}
+      <footer className="bg-gradient-to-b from-white to-creamy-100 py-6 text-center border-t border-rise-100">
+        <div className="container mx-auto px-4">
+          <p className="text-sm text-rise-700">
+            © {new Date().getFullYear()} RISEMC. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 };
 

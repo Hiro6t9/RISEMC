@@ -1,7 +1,7 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
-	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -52,16 +52,6 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				},
 				rise: {
 					DEFAULT: '#E11D48',
 					50: '#FDF2F4',
@@ -76,19 +66,17 @@ export default {
 					900: '#711029',
 					950: '#420617',
 				},
-				dark: {
-					DEFAULT: '#171717',
-					50: '#f7f7f7',
-					100: '#e3e3e3',
-					200: '#c8c8c8',
-					300: '#a4a4a4',
-					400: '#818181',
-					500: '#666666',
-					600: '#515151',
-					700: '#434343',
-					800: '#383838',
-					900: '#171717',
-					950: '#0d0d0d',
+				creamy: {
+					50: '#FFFBF5',
+					100: '#FFF6E9',
+					200: '#FFF0DC',
+					300: '#FFE4C4',
+					400: '#FFD8AC',
+					500: '#FFC993',
+					600: '#FFB973',
+					700: '#FFA94D',
+					800: '#FF9826',
+					900: '#FF8700',
 				},
 			},
 			borderRadius: {
@@ -147,6 +135,8 @@ export default {
 				'red-gradient': 'linear-gradient(90deg, #E11D48 0%, #FDF2F4 100%)',
 				'red-gradient-subtle': 'linear-gradient(90deg, #FCE7EA 0%, #FDF2F4 100%)',
 				'red-gradient-dark': 'linear-gradient(90deg, #A71736 0%, #E11D48 100%)',
+				'creamy-gradient': 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)',
+				'red-creamy-gradient': 'linear-gradient(180deg, rgb(254,100,121) 0%, rgb(251,221,186) 100%)',
 			}
 		}
 	},

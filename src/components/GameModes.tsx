@@ -1,6 +1,8 @@
 
 import { useEffect, useRef } from 'react';
 import { Shield, Sword, Clock } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { playButtonClickSound } from '@/utils/sound';
 
 interface GameMode {
   id: string;
@@ -9,6 +11,7 @@ interface GameMode {
   icon: React.ReactNode;
   color: string;
   comingSoon?: boolean;
+  image: string;
 }
 
 const gameModes: GameMode[] = [
@@ -18,6 +21,7 @@ const gameModes: GameMode[] = [
     description: 'Experience a unique survival mode where you steal hearts from other players when you kill them. The more hearts you collect, the stronger you become!',
     icon: <Shield className="h-6 w-6" />,
     color: 'from-rise-400 to-rise-600',
+    image: 'https://i.imgur.com/c8Bmi3T.jpg',
   },
   {
     id: 'ffa',
@@ -26,6 +30,7 @@ const gameModes: GameMode[] = [
     icon: <Sword className="h-6 w-6" />,
     color: 'from-rose-400 to-red-600',
     comingSoon: true,
+    image: 'https://i.imgur.com/Z8RT3J5.jpg',
   },
 ];
 
@@ -61,14 +66,14 @@ const GameModes = () => {
     <section 
       id="game-modes"
       ref={sectionRef} 
-      className="py-24 bg-gradient-to-b from-white to-rise-50 dark:from-dark-900 dark:to-dark-800"
+      className="py-24 bg-gradient-to-b from-creamy-100/30 to-white"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-16 animate-reveal">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Game Modes for <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">Every Player</span>
           </h2>
-          <p className="text-dark-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-rise-700 max-w-2xl mx-auto">
             Explore our unique game modes, each offering exciting experiences and challenges.
           </p>
         </div>
@@ -78,36 +83,49 @@ const GameModes = () => {
             <div
               key={mode.id}
               ref={el => cardRefs.current[index] = el}
-              className={`animate-reveal delayed-${index * 100} bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm rounded-xl p-8 border border-rise-100 dark:border-dark-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden`}
+              className="animate-reveal delayed-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative"
             >
-              {/* Background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br opacity-5 -z-10" style={{
-                background: `linear-gradient(135deg, #FCE7EA 0%, #E11D48 100%)`
-              }}></div>
-              
-              <div className={`w-14 h-14 mb-6 rounded-lg flex items-center justify-center bg-gradient-to-br ${mode.color} text-white shadow-md`}>
-                {mode.icon}
-              </div>
-              
-              <div className="flex items-center mb-4">
-                <h3 className="text-2xl font-bold">{mode.title}</h3>
+              {/* Game mode image */}
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src={mode.image} 
+                  alt={mode.title} 
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                
                 {mode.comingSoon && (
-                  <span className="ml-3 px-3 py-1 text-xs font-semibold rounded-full bg-rise-100 text-rise-600 dark:bg-rise-900/30 dark:text-rise-300 flex items-center">
+                  <div className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-rise-100/90 backdrop-blur-sm text-rise-600 flex items-center">
                     <Clock size={12} className="mr-1" />
                     COMING SOON
-                  </span>
+                  </div>
                 )}
               </div>
               
-              <p className="text-dark-600 dark:text-gray-300 mb-4">
-                {mode.description}
-              </p>
-              
-              {!mode.comingSoon && (
-                <button className="mt-2 px-4 py-2 bg-gradient-to-r from-rise-500 to-red-600 text-white rounded-lg hover:from-rise-600 hover:to-red-700 transition-colors shadow-md hover:shadow-lg text-sm font-medium">
-                  Play Now
-                </button>
-              )}
+              <div className="p-6 bg-white">
+                <div className="flex items-center mb-4">
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${mode.color} text-white shadow-md mr-4`}>
+                    {mode.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-rise-900">{mode.title}</h3>
+                </div>
+                
+                <p className="text-rise-700 mb-6">
+                  {mode.description}
+                </p>
+                
+                {!mode.comingSoon && (
+                  <Button 
+                    className="w-full mt-2 bg-gradient-to-r from-rise-500 to-red-600 text-white rounded-lg hover:from-rise-600 hover:to-red-700 transition-all hover:shadow-lg"
+                    onClick={() => {
+                      playButtonClickSound();
+                      window.open('https://store.risemc.fun', '_blank');
+                    }}
+                  >
+                    Play Now
+                  </Button>
+                )}
+              </div>
             </div>
           ))}
         </div>
