@@ -1,5 +1,5 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Package, Crown, ExternalLink, Tag, CreditCard } from 'lucide-react';
 
@@ -34,8 +34,8 @@ const Store = () => {
   const storeFeatures = [
     {
       icon: <Crown className="h-5 w-5" />,
-      title: 'Premium Ranks',
-      description: 'Enhance your gameplay with exclusive perks and features.',
+      title: 'Support the Server',
+      description: 'Help us continue to provide an amazing gaming experience.',
     },
     {
       icon: <Package className="h-5 w-5" />,
@@ -58,28 +58,28 @@ const Store = () => {
     <section 
       id="store" 
       ref={sectionRef}
-      className="py-24 bg-gradient-to-b from-rise-50 to-white dark:from-dark-800 dark:to-dark-900 relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-rise-950 to-dark-900 relative overflow-hidden"
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-pattern opacity-10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-pattern opacity-5 pointer-events-none"></div>
       
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Content */}
           <div className="w-full lg:w-1/2" ref={contentRef}>
             <div className="animate-reveal">
-              <div className="inline-flex items-center rounded-full px-3 py-1 mb-6 bg-rise-100 dark:bg-rise-900/30 border border-rise-200 dark:border-rise-800/30">
-                <span className="text-xs font-medium text-rise-700 dark:text-rise-300">
+              <div className="inline-flex items-center rounded-full px-3 py-1 mb-6 bg-rise-900/30 border border-rise-800/30">
+                <span className="text-xs font-medium text-rise-300">
                   Support the Server
                 </span>
               </div>
               
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
                 Visit our <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">Store</span>
               </h2>
               
-              <p className="text-dark-600 dark:text-gray-300 mb-8 max-w-lg">
-                Support the server and enhance your gameplay experience with exclusive ranks, items, and perks. Our store offers a variety of options to make your time on RiseMC even more enjoyable.
+              <p className="text-gray-300 mb-8 max-w-lg">
+                Support the server and enhance your gameplay experience with exclusive items and perks. Our store offers a variety of options to make your time on RiseMC even more enjoyable.
               </p>
               
               <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -88,12 +88,12 @@ const Store = () => {
                     key={index} 
                     className={`animate-reveal delayed-${index * 100} flex items-start`}
                   >
-                    <div className="mt-1 mr-3 p-2 rounded-md bg-rise-100 dark:bg-rise-900/50 text-rise-600 dark:text-rise-400">
+                    <div className="mt-1 mr-3 p-2 rounded-md bg-rise-900/50 text-rise-400">
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="font-medium mb-1">{feature.title}</h3>
-                      <p className="text-sm text-dark-500 dark:text-gray-400">{feature.description}</p>
+                      <h3 className="font-medium mb-1 text-white">{feature.title}</h3>
+                      <p className="text-sm text-gray-400">{feature.description}</p>
                     </div>
                   </div>
                 ))}
@@ -111,14 +111,24 @@ const Store = () => {
           
           {/* Store preview */}
           <div className="w-full lg:w-1/2 animate-reveal">
-            <div className="bg-white dark:bg-dark-800 rounded-2xl shadow-xl overflow-hidden border border-rise-100 dark:border-dark-700">
+            <div className="bg-dark-800 rounded-2xl shadow-xl overflow-hidden border border-dark-700">
               {/* Store header */}
-              <div className="bg-gradient-to-r from-rise-500 to-red-600 p-4 text-white flex items-center">
-                <ShoppingCart className="w-6 h-6 mr-3" />
-                <div>
-                  <h3 className="font-bold">RISEMC Store</h3>
-                  <p className="text-xs opacity-80">Support the server & get perks</p>
+              <div className="bg-gradient-to-r from-rise-500 to-red-600 p-4 text-white flex items-center justify-between">
+                <div className="flex items-center">
+                  <ShoppingCart className="w-6 h-6 mr-3" />
+                  <div>
+                    <h3 className="font-bold">RISEMC Store</h3>
+                    <p className="text-xs opacity-80">Support the server & get perks</p>
+                  </div>
                 </div>
+                <Button 
+                  size="sm" 
+                  variant="secondary" 
+                  className="bg-rise-600/60 hover:bg-rise-700 text-white text-xs"
+                  onClick={() => window.open('https://store.risemc.fun', '_blank')}
+                >
+                  Click to Visit
+                </Button>
               </div>
               
               {/* Store content preview */}
@@ -128,37 +138,21 @@ const Store = () => {
                     <Crown size={20} />
                   </div>
                   <div className="flex-grow">
-                    <p className="font-bold">Featured Items</p>
-                    <p className="text-xs text-dark-500 dark:text-gray-400">Check out our best-selling items!</p>
+                    <p className="font-bold text-white">Featured Items</p>
+                    <p className="text-xs text-gray-400">Check out our best-selling items!</p>
                   </div>
                 </div>
                 
-                {/* Featured items preview */}
-                <div className="space-y-4 mb-6">
-                  <div className="bg-gray-50 dark:bg-dark-900 rounded-lg p-4 flex items-center justify-between border border-rise-100 dark:border-dark-700">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 bg-gradient-to-r from-amber-400 to-amber-600 rounded-md flex items-center justify-center text-white mr-3">
-                        <Crown size={18} />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-sm">VIP Rank</h4>
-                        <p className="text-xs text-dark-500 dark:text-gray-400">Exclusive perks & features</p>
-                      </div>
-                    </div>
-                    <span className="text-sm font-bold text-rise-600">$9.99</span>
-                  </div>
+                {/* Store items preview */}
+                <div className="bg-dark-900 rounded-lg p-4 mb-6">
+                  <img 
+                    src="https://i.imgur.com/vKSkM3L.jpg" 
+                    alt="Store Items" 
+                    className="w-full h-auto rounded-lg mb-4"
+                  />
                   
-                  <div className="bg-gray-50 dark:bg-dark-900 rounded-lg p-4 flex items-center justify-between border border-rise-100 dark:border-dark-700">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-purple-600 rounded-md flex items-center justify-center text-white mr-3">
-                        <Package size={18} />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-sm">Mystery Box</h4>
-                        <p className="text-xs text-dark-500 dark:text-gray-400">Random rare items & gear</p>
-                      </div>
-                    </div>
-                    <span className="text-sm font-bold text-rise-600">$4.99</span>
+                  <div className="text-center text-sm text-gray-300 font-medium mt-2">
+                    Browse our collection of unique items
                   </div>
                 </div>
                 

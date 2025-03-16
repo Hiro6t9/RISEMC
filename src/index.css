@@ -117,14 +117,9 @@
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(21, 12, 16, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.dark .glass-card {
-  background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -164,4 +159,35 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(225, 29, 72, 0.5);
+}
+
+/* Dark theme specific styles */
+.dark body {
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+}
+
+/* Animation for the RISEMC logo on load */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes expandWidth {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
