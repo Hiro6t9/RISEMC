@@ -41,3 +41,29 @@
 .read-the-docs {
   color: #8a7030;
 }
+
+/* Discord embed styles */
+.discord-embed {
+  border-left: 4px solid #FFC000;
+  background-color: rgba(255, 192, 0, 0.1);
+  padding: 0.5rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.discord-embed-title {
+  color: #FFC000;
+  font-weight: bold;
+}
+
+.discord-embed-description {
+  color: #333;
+}
+
+/* Special highlight for server IP */
+.server-ip {
+  background: linear-gradient(90deg, #FFC000 0%, #FFE066 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  letter-spacing: 1px;
+}

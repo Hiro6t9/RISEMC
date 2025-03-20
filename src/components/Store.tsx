@@ -1,5 +1,5 @@
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Package, Crown, ExternalLink, Tag, CreditCard } from 'lucide-react';
 import { playButtonClickSound } from '@/utils/sound';
@@ -113,22 +113,22 @@ const Store = () => {
             </div>
           </div>
           
-          {/* Store preview */}
+          {/* Updated Store preview to match the provided image */}
           <div className="w-full lg:w-1/2 animate-reveal">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-coin-200">
               {/* Store header */}
-              <div className="bg-coin-500 p-4 text-white flex items-center justify-between">
+              <div className="bg-[#FFC000] p-4 text-white flex items-center justify-between">
                 <div className="flex items-center">
                   <ShoppingCart className="w-6 h-6 mr-3" />
                   <div>
                     <h3 className="font-bold">COINMC Store</h3>
-                    <p className="text-xs opacity-80">Support the server & get perks</p>
+                    <p className="text-xs opacity-90">Support the server & get perks</p>
                   </div>
                 </div>
                 <Button 
                   size="sm" 
                   variant="secondary" 
-                  className="bg-coin-600/60 hover:bg-coin-700 text-white text-xs"
+                  className="bg-amber-400 hover:bg-amber-500 text-white border-none"
                   onClick={() => {
                     playButtonClickSound();
                     window.open('https://store.coinmc.fun', '_blank');
@@ -138,34 +138,28 @@ const Store = () => {
                 </Button>
               </div>
               
-              {/* Store content preview */}
-              <div className="p-6">
-                <div className="flex items-center mb-6">
-                  <div className="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gradient-to-r from-coin-500 to-yellow-600 flex items-center justify-center text-white">
+              {/* Store content preview - Matching the screenshot */}
+              <div className="p-4">
+                {/* Featured Items header */}
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 rounded-full overflow-hidden mr-3 bg-[#FFC000] flex items-center justify-center text-white">
                     <Crown size={20} />
                   </div>
                   <div className="flex-grow">
                     <p className="font-bold text-coin-900">Featured Items</p>
-                    <p className="text-xs text-coin-700">Check out our best-selling items!</p>
+                    <p className="text-xs text-amber-700">Check out our best-selling items!</p>
                   </div>
                 </div>
                 
                 {/* Store items preview */}
-                <div className="bg-coin-50 rounded-lg p-4 mb-6">
-                  <img 
-                    src="https://i.imgur.com/vKSkM3L.jpg" 
-                    alt="Store Items" 
-                    className="w-full h-auto rounded-lg mb-4"
-                  />
-                  
-                  <div className="text-center text-sm text-coin-700 font-medium mt-2">
-                    Browse our collection of unique items
-                  </div>
+                <div className="bg-amber-50 rounded-lg p-4 mb-4 text-center">
+                  <p className="text-amber-800 font-medium">Browse our collection of unique items</p>
                 </div>
                 
+                {/* Button at the bottom */}
                 <div className="text-center">
                   <Button 
-                    className="w-full bg-coin-500 hover:bg-coin-600 text-white shadow-md"
+                    className="w-full bg-[#FFC000] hover:bg-amber-500 text-white border-0"
                     onClick={() => {
                       playButtonClickSound();
                       window.open('https://store.coinmc.fun', '_blank');

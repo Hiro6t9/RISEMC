@@ -1,7 +1,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, Users, Video, ExternalLink, Headphones, Activity } from 'lucide-react';
+import { MessageSquare, Users, Headphones, Activity, ExternalLink } from 'lucide-react';
 import { playButtonClickSound } from '@/utils/sound';
 
 const Discord = () => {
@@ -40,14 +40,12 @@ const Discord = () => {
       try {
         setIsLoading(true);
         // In a real implementation, replace this with an actual API call to your Discord server
-        // For example: const response = await fetch('https://api.coinmc.fun/discord/members');
         
         // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 2000));
         
-        // Random number between 5000-10000 for demo purposes
-        const randomCount = Math.floor(Math.random() * 5000) + 5000;
-        setMemberCount(randomCount);
+        // Fixed count to match the screenshot: 5,050 members
+        setMemberCount(5050);
       } catch (error) {
         console.error('Failed to fetch Discord member count:', error);
         setMemberCount(null);
@@ -145,11 +143,11 @@ const Discord = () => {
             </div>
           </div>
           
-          {/* Discord embed/preview */}
+          {/* Updated Discord embed/preview to match the screenshot */}
           <div className="w-full lg:w-1/2 animate-reveal">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-coin-200">
               {/* Discord header */}
-              <div className="bg-coin-500 p-4 text-white flex items-center justify-between">
+              <div className="bg-[#FFC000] p-4 text-white flex items-center justify-between">
                 <div className="flex items-center">
                   <img 
                     src="https://i.imgur.com/FRAdsKu.png" 
@@ -158,14 +156,14 @@ const Discord = () => {
                   />
                   <div>
                     <h3 className="font-bold">COINMC Community</h3>
-                    <p className="text-xs opacity-80">
+                    <p className="text-xs opacity-90">
                       {isLoading ? (
                         <span className="inline-flex items-center">
                           <span className="animate-pulse h-1.5 w-1.5 rounded-full bg-green-500 mr-1.5"></span>
                           Loading member count...
                         </span>
                       ) : (
-                        <span>{memberCount?.toLocaleString() || "Many"} members</span>
+                        <span>{memberCount?.toLocaleString() || "5,050"} members</span>
                       )}
                     </p>
                   </div>
@@ -173,7 +171,7 @@ const Discord = () => {
                 <Button 
                   size="sm" 
                   variant="secondary" 
-                  className="bg-coin-400 hover:bg-coin-600 text-white text-xs"
+                  className="bg-amber-400 hover:bg-amber-500 text-white border-none"
                   onClick={() => {
                     playButtonClickSound();
                     window.open('https://discord.coinmc.fun', '_blank');
@@ -183,9 +181,9 @@ const Discord = () => {
                 </Button>
               </div>
               
-              {/* Discord content preview - Replaced announcements with welcome message */}
-              <div className="p-6">
-                <div className="flex items-center mb-6">
+              {/* Discord content preview - Updated to match the screenshot */}
+              <div className="p-4">
+                <div className="flex items-center mb-4">
                   <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
                     <img 
                       src="https://i.imgur.com/QSLgHKC.jpg" 
@@ -195,15 +193,15 @@ const Discord = () => {
                   </div>
                   <div className="flex-grow">
                     <p className="font-bold text-coin-900">COINMC Server</p>
-                    <p className="text-xs text-coin-700">Welcome to our official Discord server!</p>
+                    <p className="text-xs text-amber-700">Welcome to our official Discord server!</p>
                   </div>
                 </div>
                 
-                {/* Welcome message instead of announcements */}
-                <div className="bg-coin-50 rounded-lg p-4 mb-4">
+                {/* Welcome message */}
+                <div className="bg-amber-50 rounded-lg p-4 mb-4">
                   <div className="flex items-center text-sm mb-2">
-                    <MessageSquare size={14} className="mr-2 text-coin-500" />
-                    <span className="font-medium text-coin-800">#welcome</span>
+                    <MessageSquare size={14} className="mr-2 text-amber-500" />
+                    <span className="font-medium text-amber-800">#welcome</span>
                   </div>
                   
                   <div className="text-center p-4">
@@ -212,16 +210,16 @@ const Discord = () => {
                       alt="Minecraft Characters" 
                       className="h-24 mx-auto mb-3" 
                     />
-                    <p className="text-coin-800 font-minecraft text-sm">
+                    <p className="text-amber-800 font-minecraft text-sm">
                       Welcome to the official COINMC Discord!
                     </p>
-                    <p className="text-coin-700 text-xs mt-2">
+                    <p className="text-amber-700 text-xs mt-2">
                       Join voice chats, find teammates, and stay updated with server events
                     </p>
                   </div>
                 </div>
                 
-                <div className="text-center text-sm text-coin-600">
+                <div className="text-center text-sm text-amber-600">
                   Join our vibrant community of Minecraft players today
                 </div>
               </div>
