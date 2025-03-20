@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import GameModes from '@/components/GameModes';
 import Discord from '@/components/Discord';
+import Store from '@/components/Store';
 
 const Index = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -100,6 +101,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <GameModes />
+      <Store />
       <Discord />
       
       {/* Footer */}

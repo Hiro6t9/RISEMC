@@ -2,6 +2,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Package, Crown, ExternalLink, Tag, CreditCard } from 'lucide-react';
+import { playButtonClickSound } from '@/utils/sound';
 
 const Store = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -58,7 +59,7 @@ const Store = () => {
     <section 
       id="store" 
       ref={sectionRef}
-      className="py-24 bg-gradient-to-b from-rise-950 to-dark-900 relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-coin-100/30 to-white relative overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern opacity-5 pointer-events-none"></div>
@@ -68,18 +69,18 @@ const Store = () => {
           {/* Content */}
           <div className="w-full lg:w-1/2" ref={contentRef}>
             <div className="animate-reveal">
-              <div className="inline-flex items-center rounded-full px-3 py-1 mb-6 bg-rise-900/30 border border-rise-800/30">
-                <span className="text-xs font-medium text-rise-300">
+              <div className="inline-flex items-center rounded-full px-3 py-1 mb-6 bg-coin-100/30 border border-coin-200/30">
+                <span className="text-xs font-medium text-coin-700">
                   Support the Server
                 </span>
               </div>
               
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-                Visit our <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">Store</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Visit our <span className="text-coin-500">Store</span>
               </h2>
               
-              <p className="text-gray-300 mb-8 max-w-lg">
-                Support the server and enhance your gameplay experience with exclusive items and perks. Our store offers a variety of options to make your time on RiseMC even more enjoyable.
+              <p className="text-coin-800 mb-8 max-w-lg">
+                Support the server and enhance your gameplay experience with exclusive items and perks. Our store offers a variety of options to make your time on COINMC even more enjoyable.
               </p>
               
               <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -88,20 +89,23 @@ const Store = () => {
                     key={index} 
                     className={`animate-reveal delayed-${index * 100} flex items-start`}
                   >
-                    <div className="mt-1 mr-3 p-2 rounded-md bg-rise-900/50 text-rise-400">
+                    <div className="mt-1 mr-3 p-2 rounded-md bg-coin-100/50 text-coin-600">
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="font-medium mb-1 text-white">{feature.title}</h3>
-                      <p className="text-sm text-gray-400">{feature.description}</p>
+                      <h3 className="font-medium mb-1 text-coin-900">{feature.title}</h3>
+                      <p className="text-sm text-coin-700">{feature.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
               
               <Button 
-                className="bg-gradient-to-r from-rise-500 to-red-600 hover:from-rise-600 hover:to-red-700 text-white shadow-md"
-                onClick={() => window.open('https://store.risemc.fun', '_blank')}
+                className="bg-coin-500 hover:bg-coin-600 text-white shadow-md"
+                onClick={() => {
+                  playButtonClickSound();
+                  window.open('https://store.coinmc.fun', '_blank');
+                }}
               >
                 Visit Store
                 <ExternalLink size={16} className="ml-2" />
@@ -111,21 +115,24 @@ const Store = () => {
           
           {/* Store preview */}
           <div className="w-full lg:w-1/2 animate-reveal">
-            <div className="bg-dark-800 rounded-2xl shadow-xl overflow-hidden border border-dark-700">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-coin-200">
               {/* Store header */}
-              <div className="bg-gradient-to-r from-rise-500 to-red-600 p-4 text-white flex items-center justify-between">
+              <div className="bg-coin-500 p-4 text-white flex items-center justify-between">
                 <div className="flex items-center">
                   <ShoppingCart className="w-6 h-6 mr-3" />
                   <div>
-                    <h3 className="font-bold">RISEMC Store</h3>
+                    <h3 className="font-bold">COINMC Store</h3>
                     <p className="text-xs opacity-80">Support the server & get perks</p>
                   </div>
                 </div>
                 <Button 
                   size="sm" 
                   variant="secondary" 
-                  className="bg-rise-600/60 hover:bg-rise-700 text-white text-xs"
-                  onClick={() => window.open('https://store.risemc.fun', '_blank')}
+                  className="bg-coin-600/60 hover:bg-coin-700 text-white text-xs"
+                  onClick={() => {
+                    playButtonClickSound();
+                    window.open('https://store.coinmc.fun', '_blank');
+                  }}
                 >
                   Click to Visit
                 </Button>
@@ -134,32 +141,35 @@ const Store = () => {
               {/* Store content preview */}
               <div className="p-6">
                 <div className="flex items-center mb-6">
-                  <div className="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gradient-to-r from-rise-500 to-red-600 flex items-center justify-center text-white">
+                  <div className="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gradient-to-r from-coin-500 to-yellow-600 flex items-center justify-center text-white">
                     <Crown size={20} />
                   </div>
                   <div className="flex-grow">
-                    <p className="font-bold text-white">Featured Items</p>
-                    <p className="text-xs text-gray-400">Check out our best-selling items!</p>
+                    <p className="font-bold text-coin-900">Featured Items</p>
+                    <p className="text-xs text-coin-700">Check out our best-selling items!</p>
                   </div>
                 </div>
                 
                 {/* Store items preview */}
-                <div className="bg-dark-900 rounded-lg p-4 mb-6">
+                <div className="bg-coin-50 rounded-lg p-4 mb-6">
                   <img 
                     src="https://i.imgur.com/vKSkM3L.jpg" 
                     alt="Store Items" 
                     className="w-full h-auto rounded-lg mb-4"
                   />
                   
-                  <div className="text-center text-sm text-gray-300 font-medium mt-2">
+                  <div className="text-center text-sm text-coin-700 font-medium mt-2">
                     Browse our collection of unique items
                   </div>
                 </div>
                 
                 <div className="text-center">
                   <Button 
-                    className="w-full bg-gradient-to-r from-rise-500 to-red-600 hover:from-rise-600 hover:to-red-700 text-white shadow-md"
-                    onClick={() => window.open('https://store.risemc.fun', '_blank')}
+                    className="w-full bg-coin-500 hover:bg-coin-600 text-white shadow-md"
+                    onClick={() => {
+                      playButtonClickSound();
+                      window.open('https://store.coinmc.fun', '_blank');
+                    }}
                   >
                     Browse All Items
                     <ShoppingCart size={16} className="ml-2" />
