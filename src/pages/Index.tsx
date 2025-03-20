@@ -41,7 +41,7 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="min-h-screen text-rise-900 overflow-hidden">
+    <div className="min-h-screen text-coin-900 overflow-hidden">
       {/* Animated Logo that appears when someone visits the website */}
       {showSplash && (
         <motion.div 
@@ -76,9 +76,9 @@ const Index = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">RISE</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-coin-500 to-yellow-600">COIN</span>
                 <motion.span 
-                  className="text-rise-800"
+                  className="text-coin-800"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8, duration: 0.5 }}
@@ -88,7 +88,7 @@ const Index = () => {
               </motion.span>
             </motion.h1>
             <motion.div 
-              className="h-1 w-0 bg-gradient-to-r from-rise-500 to-red-600 mt-4"
+              className="h-1 w-0 bg-gradient-to-r from-coin-500 to-yellow-600 mt-4"
               initial={{ width: 0 }}
               animate={{ width: "200px" }}
               transition={{ delay: 1.2, duration: 0.8 }}
@@ -103,10 +103,10 @@ const Index = () => {
       <Discord />
       
       {/* Footer */}
-      <footer className="bg-gradient-to-b from-white to-creamy-100 py-6 text-center border-t border-rise-100">
+      <footer className="bg-gradient-to-b from-white to-creamy-100 py-6 text-center border-t border-coin-100">
         <div className="container mx-auto px-4">
-          <p className="text-sm text-rise-700">
-            © {new Date().getFullYear()} RISEMC. All rights reserved.
+          <p className="text-sm text-coin-700">
+            © {new Date().getFullYear()} COINMC. All rights reserved.
           </p>
         </div>
       </footer>

@@ -20,17 +20,17 @@ const gameModes: GameMode[] = [
     title: 'LifeSteal',
     description: 'Experience a unique survival mode where you steal hearts from other players when you kill them. The more hearts you collect, the stronger you become!',
     icon: <Shield className="h-6 w-6" />,
-    color: 'from-rise-400 to-rise-600',
-    image: 'https://i.imgur.com/c8Bmi3T.jpg',
+    color: 'from-coin-400 to-coin-600',
+    image: 'https://i.imgur.com/qOONLqW.jpg',
   },
   {
     id: 'ffa',
     title: 'FREE FOR ALL',
     description: 'A chaotic battle arena where everyone fights against each other. Only the strongest will survive!',
     icon: <Sword className="h-6 w-6" />,
-    color: 'from-rose-400 to-red-600',
+    color: 'from-amber-400 to-yellow-600',
     comingSoon: true,
-    image: 'https://i.imgur.com/Z8RT3J5.jpg',
+    image: 'https://i.imgur.com/j2TAQ6x.jpg',
   },
 ];
 
@@ -71,9 +71,9 @@ const GameModes = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-16 animate-reveal">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Game Modes for <span className="text-transparent bg-clip-text bg-gradient-to-r from-rise-500 to-red-600">Every Player</span>
+            Game Modes for <span className="text-transparent bg-clip-text bg-gradient-to-r from-coin-500 to-yellow-600">Every Player</span>
           </h2>
-          <p className="text-rise-700 max-w-2xl mx-auto">
+          <p className="text-coin-700 max-w-2xl mx-auto">
             Explore our unique game modes, each offering exciting experiences and challenges.
           </p>
         </div>
@@ -95,7 +95,7 @@ const GameModes = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 
                 {mode.comingSoon && (
-                  <div className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-rise-100/90 backdrop-blur-sm text-rise-600 flex items-center">
+                  <div className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-coin-100/90 backdrop-blur-sm text-coin-600 flex items-center">
                     <Clock size={12} className="mr-1" />
                     COMING SOON
                   </div>
@@ -107,19 +107,19 @@ const GameModes = () => {
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${mode.color} text-white shadow-md mr-4`}>
                     {mode.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-rise-900">{mode.title}</h3>
+                  <h3 className="text-xl font-bold text-coin-900">{mode.title}</h3>
                 </div>
                 
-                <p className="text-rise-700 mb-6">
+                <p className="text-coin-700 mb-6">
                   {mode.description}
                 </p>
                 
                 {!mode.comingSoon && (
                   <Button 
-                    className="w-full mt-2 bg-gradient-to-r from-rise-500 to-red-600 text-white rounded-lg hover:from-rise-600 hover:to-red-700 transition-all hover:shadow-lg"
+                    className="w-full mt-2 bg-gradient-to-r from-coin-500 to-yellow-600 text-white rounded-lg hover:from-coin-600 hover:to-yellow-700 transition-all hover:shadow-lg"
                     onClick={() => {
                       playButtonClickSound();
-                      window.open('https://store.risemc.fun', '_blank');
+                      window.open('https://store.coinmc.fun', '_blank');
                     }}
                   >
                     Play Now

@@ -52,19 +52,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				rise: {
-					DEFAULT: '#E11D48',
-					50: '#FDF2F4',
-					100: '#FCE7EA',
-					200: '#F9D0D7',
-					300: '#F4A9B7',
-					400: '#EB728A',
-					500: '#E11D48',
-					600: '#CB1B41',
-					700: '#A71736',
-					800: '#861530',
-					900: '#711029',
-					950: '#420617',
+				coin: {
+					DEFAULT: '#FFC000',
+					50: '#FFF9E6',
+					100: '#FFF3CC',
+					200: '#FFE799',
+					300: '#FFDB66',
+					400: '#FFCE33',
+					500: '#FFC000',
+					600: '#CC9A00',
+					700: '#997300',
+					800: '#664D00',
+					900: '#332600',
+					950: '#1A1300',
 				},
 				creamy: {
 					50: '#FFFBF5',
@@ -132,11 +132,11 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'red-gradient': 'linear-gradient(90deg, #E11D48 0%, #FDF2F4 100%)',
-				'red-gradient-subtle': 'linear-gradient(90deg, #FCE7EA 0%, #FDF2F4 100%)',
-				'red-gradient-dark': 'linear-gradient(90deg, #A71736 0%, #E11D48 100%)',
+				'gold-gradient': 'linear-gradient(90deg, #FFC000 0%, #FFF9E6 100%)',
+				'gold-gradient-subtle': 'linear-gradient(90deg, #FFF3CC 0%, #FFF9E6 100%)',
+				'gold-gradient-dark': 'linear-gradient(90deg, #997300 0%, #FFC000 100%)',
 				'creamy-gradient': 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)',
-				'red-creamy-gradient': 'linear-gradient(180deg, rgb(254,100,121) 0%, rgb(251,221,186) 100%)',
+				'gold-creamy-gradient': 'linear-gradient(180deg, rgb(255,192,0) 0%, rgb(251,221,186) 100%)',
 			}
 		}
 	},

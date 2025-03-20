@@ -6,32 +6,32 @@
 @layer base {
   :root {
     --background: 0 43% 99%;
-    --foreground: 340 40% 20%;
+    --foreground: 40 40% 20%;
 
     --card: 0 43% 99%;
-    --card-foreground: 340 40% 20%;
+    --card-foreground: 40 40% 20%;
 
     --popover: 0 43% 99%;
-    --popover-foreground: 340 40% 20%;
+    --popover-foreground: 40 40% 20%;
 
-    --primary: 346 83% 50%;
-    --primary-foreground: 355 100% 97%;
+    --primary: 45 100% 50%;
+    --primary-foreground: 45 100% 97%;
 
     --secondary: 30 100% 97%;
-    --secondary-foreground: 350 60% 30%;
+    --secondary-foreground: 45 60% 30%;
 
     --muted: 30 70% 96%;
-    --muted-foreground: 340 20% 50%;
+    --muted-foreground: 40 20% 50%;
 
     --accent: 30 100% 94%;
-    --accent-foreground: 350 60% 30%;
+    --accent-foreground: 45 60% 30%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 350 30% 90%;
-    --input: 350 30% 90%;
-    --ring: 346 83% 50%;
+    --border: 45 30% 90%;
+    --input: 45 30% 90%;
+    --ring: 45 100% 50%;
 
     --radius: 0.75rem;
   }
@@ -47,7 +47,7 @@
   body {
     @apply bg-background text-foreground relative overflow-x-hidden;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e11d48' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffc000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
       linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
     background-attachment: fixed;
   }
@@ -81,14 +81,14 @@
 }
 
 .glass-card {
-  background: rgba(225, 29, 72, 0.05);
+  background: rgba(255, 192, 0, 0.05);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-rise-500 to-rise-700;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-coin-500 to-coin-700;
 }
 
 @font-face {
@@ -113,15 +113,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(225, 29, 72, 0.3);
+  background: rgba(255, 192, 0, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(225, 29, 72, 0.5);
+  background: rgba(255, 192, 0, 0.5);
 }
 
-/* Animation for the RISEMC logo on load */
+/* Animation for the COINMC logo on load */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -147,13 +147,13 @@
 }
 
 /* Button hover effect */
-.btn-rise {
+.btn-coin {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
-.btn-rise:before {
+.btn-coin:before {
   content: '';
   position: absolute;
   top: 0;
@@ -165,7 +165,7 @@
   z-index: -1;
 }
 
-.btn-rise:hover:before {
+.btn-coin:hover:before {
   width: 100%;
 }
 
