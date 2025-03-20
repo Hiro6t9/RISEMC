@@ -183,7 +183,7 @@ const Discord = () => {
                 </Button>
               </div>
               
-              {/* Discord content preview */}
+              {/* Discord content preview - Replaced announcements with welcome message */}
               <div className="p-6">
                 <div className="flex items-center mb-6">
                   <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
@@ -199,31 +199,30 @@ const Discord = () => {
                   </div>
                 </div>
                 
-                {/* Channel preview */}
+                {/* Welcome message instead of announcements */}
                 <div className="bg-coin-50 rounded-lg p-4 mb-4">
                   <div className="flex items-center text-sm mb-2">
                     <MessageSquare size={14} className="mr-2 text-coin-500" />
-                    <span className="font-medium text-coin-800">#announcements</span>
+                    <span className="font-medium text-coin-800">#welcome</span>
                   </div>
                   
-                  <div className="space-y-3 text-sm">
-                    <div className="flex">
-                      <span className="bg-green-100 text-green-600 text-xs px-1.5 py-0.5 rounded mr-2">
-                        NEW
-                      </span>
-                      <p className="text-coin-700">Summer event starting this weekend! Join for double XP and special rewards.</p>
-                    </div>
-                    <div>
-                      <p className="text-coin-700">Server maintenance scheduled for Tuesday, June 15th at 3:00 AM UTC.</p>
-                    </div>
-                    <div>
-                      <p className="text-coin-700">Congratulations to @MinecraftPro for reaching the highest level this month!</p>
-                    </div>
+                  <div className="text-center p-4">
+                    <img 
+                      src="https://i.imgur.com/nJFfBfa.png" 
+                      alt="Minecraft Characters" 
+                      className="h-24 mx-auto mb-3" 
+                    />
+                    <p className="text-coin-800 font-minecraft text-sm">
+                      Welcome to the official COINMC Discord!
+                    </p>
+                    <p className="text-coin-700 text-xs mt-2">
+                      Join voice chats, find teammates, and stay updated with server events
+                    </p>
                   </div>
                 </div>
                 
                 <div className="text-center text-sm text-coin-600">
-                  Join {memberCount?.toLocaleString() || "thousands of"} other members and be part of our community
+                  Join our vibrant community of Minecraft players today
                 </div>
               </div>
             </div>
