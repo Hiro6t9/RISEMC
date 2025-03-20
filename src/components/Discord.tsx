@@ -1,7 +1,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, Users, Headphones, Activity, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { playButtonClickSound } from '@/utils/sound';
 
 const Discord = () => {
@@ -61,29 +61,6 @@ const Discord = () => {
     
     return () => clearInterval(interval);
   }, []);
-
-  const discordFeatures = [
-    {
-      icon: <MessageSquare className="h-5 w-5" />,
-      title: 'Community Chat',
-      description: 'Connect with other players, ask questions, and share your creations.',
-    },
-    {
-      icon: <Users className="h-5 w-5" />,
-      title: 'Find Friends',
-      description: 'Meet new people, join teams, and create lasting friendships.',
-    },
-    {
-      icon: <Headphones className="h-5 w-5" />,
-      title: 'Voice Chat',
-      description: 'Communicate with your teammates in real-time while playing.',
-    },
-    {
-      icon: <Activity className="h-5 w-5" />,
-      title: 'Server Updates',
-      description: 'Get notified about server news, events, and maintenance.',
-    },
-  ];
   
   return (
     <section 
@@ -113,23 +90,6 @@ const Discord = () => {
                 Be part of our growing community. Chat with other players, stay updated with server announcements, participate in events, and get support from our team.
               </p>
               
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                {discordFeatures.map((feature, index) => (
-                  <div 
-                    key={index} 
-                    className={`animate-reveal delayed-${index * 100} flex items-start`}
-                  >
-                    <div className="mt-1 mr-3 p-2 rounded-md bg-coin-100/50 text-coin-600">
-                      {feature.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-medium mb-1 text-coin-900">{feature.title}</h3>
-                      <p className="text-sm text-coin-700">{feature.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
               <Button 
                 className="bg-coin-500 hover:bg-coin-600 text-white"
                 onClick={() => {
@@ -143,85 +103,33 @@ const Discord = () => {
             </div>
           </div>
           
-          {/* Updated Discord embed/preview to match the screenshot */}
+          {/* Simplified Discord Card */}
           <div className="w-full lg:w-1/2 animate-reveal">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-coin-200">
-              {/* Discord header */}
-              <div className="bg-[#FFC000] p-4 text-white flex items-center justify-between">
-                <div className="flex items-center">
-                  <img 
-                    src="https://i.imgur.com/FRAdsKu.png" 
-                    alt="Discord Logo" 
-                    className="w-8 h-8 mr-3" 
-                  />
-                  <div>
-                    <h3 className="font-bold">COINMC Community</h3>
-                    <p className="text-xs opacity-90">
-                      {isLoading ? (
-                        <span className="inline-flex items-center">
-                          <span className="animate-pulse h-1.5 w-1.5 rounded-full bg-green-500 mr-1.5"></span>
-                          Loading member count...
-                        </span>
-                      ) : (
-                        <span>{memberCount?.toLocaleString() || "5,050"} members</span>
-                      )}
-                    </p>
-                  </div>
-                </div>
+              {/* Simple header */}
+              <div className="bg-[#FFC000] p-6 text-white text-center">
+                <h3 className="font-bold text-2xl mb-1">COINMC Discord</h3>
+                <p className="opacity-90">
+                  {isLoading ? 'Loading member count...' : `${memberCount?.toLocaleString() || "5,050"} members`}
+                </p>
+              </div>
+              
+              {/* Simple content */}
+              <div className="p-8 text-center">
+                <p className="text-coin-800 font-medium mb-6">
+                  Join our community to chat with players, find teammates, and stay updated on server events
+                </p>
+                
                 <Button 
-                  size="sm" 
-                  variant="secondary" 
-                  className="bg-amber-400 hover:bg-amber-500 text-white border-none"
+                  className="w-full bg-[#FFC000] hover:bg-amber-500 text-white"
                   onClick={() => {
                     playButtonClickSound();
                     window.open('https://discord.coinmc.fun', '_blank');
                   }}
                 >
-                  Click to Visit
+                  Join Discord
+                  <ExternalLink size={16} className="ml-2" />
                 </Button>
-              </div>
-              
-              {/* Discord content preview - Updated to match the screenshot */}
-              <div className="p-4">
-                <div className="flex items-center mb-4">
-                  <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
-                    <img 
-                      src="https://i.imgur.com/QSLgHKC.jpg" 
-                      alt="Server Icon" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="flex-grow">
-                    <p className="font-bold text-coin-900">COINMC Server</p>
-                    <p className="text-xs text-amber-700">Welcome to our official Discord server!</p>
-                  </div>
-                </div>
-                
-                {/* Welcome message */}
-                <div className="bg-amber-50 rounded-lg p-4 mb-4">
-                  <div className="flex items-center text-sm mb-2">
-                    <MessageSquare size={14} className="mr-2 text-amber-500" />
-                    <span className="font-medium text-amber-800">#welcome</span>
-                  </div>
-                  
-                  <div className="text-center p-4">
-                    <img 
-                      src="https://i.imgur.com/nJFfBfa.png" 
-                      alt="Minecraft Characters" 
-                      className="h-24 mx-auto mb-3" 
-                    />
-                    <p className="text-amber-800 font-minecraft text-sm">
-                      Welcome to the official COINMC Discord!
-                    </p>
-                    <p className="text-amber-700 text-xs mt-2">
-                      Join voice chats, find teammates, and stay updated with server events
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="text-center text-sm text-amber-600">
-                  Join our vibrant community of Minecraft players today
-                </div>
               </div>
             </div>
           </div>
